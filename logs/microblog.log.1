@@ -1,0 +1,123 @@
+2022-05-31 13:46:56,182 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:45]
+2022-05-31 13:48:12,864 ERROR: Exception on /edit_profile [POST] [in /Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/app.py:1456]
+Traceback (most recent call last):
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1820, in _execute_context
+    cursor, statement, parameters, context
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: user.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 303, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/akliebhan/Code/microblog/app/routes.py", line 89, in edit_profile
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1435, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3367, in flush
+    self._flush(objects)
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3507, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 3467, in _flush
+    flush_context.execute()
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/unitofwork.py", line 633, in execute
+    uow,
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 242, in save_obj
+    update,
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/persistence.py", line 1002, in _emit_update_statements
+    statement, multiparams, execution_options=execution_options
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1631, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 326, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1508, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1863, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 2044, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 207, in raise_
+    raise exception
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1820, in _execute_context
+    cursor, statement, parameters, context
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 732, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
+[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
+[parameters: ('austin', '', 2)]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2022-05-31 14:46:49,605 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:45]
+2022-05-31 14:46:59,325 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:45]
+2022-05-31 16:52:53,339 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:45]
+2022-06-14 09:23:45,131 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:45]
+2022-07-25 16:51:10,547 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:45]
+2022-07-25 20:39:58,552 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:52]
+2022-10-19 17:19:49,032 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:52]
+2022-10-24 14:48:30,506 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:54]
+2022-10-24 14:52:43,969 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:54]
+2022-10-24 14:58:12,032 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:54]
+2022-10-24 14:58:25,429 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:54]
+2022-10-24 15:00:59,455 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:54]
+2022-10-24 15:03:18,307 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:54]
+2022-10-24 15:03:32,174 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:54]
+2022-10-24 15:05:08,399 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:54]
+2022-10-24 16:54:09,369 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:62]
+2022-10-24 16:54:11,445 ERROR: Exception on /login [GET] [in /Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/app.py:1456]
+Traceback (most recent call last):
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/Users/akliebhan/Code/microblog/app/routes.py", line 53, in login
+    return render_template("login.html", title="Sign In", form=form)
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 151, in render_template
+    ctx.app,
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/akliebhan/Code/microblog/app/templates/login.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/akliebhan/Code/microblog/app/templates/base.html", line 32, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/akliebhan/Code/microblog/app/templates/login.html", line 27, in block 'content'
+    <a href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/helpers.py", line 336, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/flask/helpers.py", line 324, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/Users/akliebhan/Code/microblog/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 2305, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'reset_password_request'. Did you mean 'edit_profile' instead?
+2022-10-24 17:08:27,711 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:62]
+2022-10-24 23:02:22,592 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:65]
+2022-10-25 10:21:19,404 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:65]
+2022-10-25 10:59:14,617 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:67]
+2022-10-25 11:03:05,633 INFO: Microblog startup [in /Users/akliebhan/Code/microblog/app/__init__.py:67]
