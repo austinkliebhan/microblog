@@ -1,4 +1,4 @@
-from app import app, db
+from app import app, db, cli
 from app.models import User, Post
 
 # The flask application instance is called app and is a member of the app package.
