@@ -8,6 +8,18 @@ from flask_login import UserMixin
 from hashlib import md5
 from werkzeug.security import generate_password_hash, check_password_hash
 
+"""
+    Reminder:
+        Database migrations will be required everytime that the data model is changed.
+        Once the migration is completed upgrade the database.
+        
+    CMDs:
+
+        flask db migrate -m "..."
+
+        flask db upgrade
+"""
+
 followers = db.Table(
     "followers",
     db.Column("follower_id", db.Integer, db.ForeignKey("user.id")),
@@ -93,6 +105,7 @@ class Post(db.Model):
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    language = db.Column(db.String(5))
 
     def __repr__(self):
         return "<Post {}>".format(self.body)
