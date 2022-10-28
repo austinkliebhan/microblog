@@ -1,7 +1,8 @@
-from app import app, db, cli
+from app import create_app, db, cli
 from app.models import User, Post
 
-# The flask application instance is called app and is a member of the app package.
+app = create_app()
+cli.register(app)
 
 
 @app.shell_context_processor
