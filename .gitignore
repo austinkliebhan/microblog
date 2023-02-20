@@ -130,4 +130,6 @@ dmypy.json
 .pyre/
 sendgrid.env
 
+# ignoring all logs
 **/logs
+*.log
